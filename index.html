@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width" />
   <link rel="stylesheet" type="text/css" href="main.css">
   <title>Title</title>
 </head>
@@ -22,7 +23,7 @@
 
   <script>
   var api = new XMLHttpRequest();
-  api.open("GET","http://data.goteborg.se/SelfServiceBicycleService/v1.0/Stations/73eb4084-3431-4e88-978b-6e2c2d7bccbe?format=xml",false);
+  api.open("GET","https://data.goteborg.se/SelfServiceBicycleService/v1.0/Stations/73eb4084-3431-4e88-978b-6e2c2d7bccbe?format=xml",false);
   api.send();
   var xmlDoc = api.responseXML;
 
