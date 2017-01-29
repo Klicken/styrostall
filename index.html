@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <title>Title</title>
+</head>
+
+<body>
+  <img src="logo.png" alt="logo">
+
+  <div class="container">
+    <table class="table" id="pageTable">
+      <tr>
+        <th>Station</th>
+        <th>Cyklar</th>
+        <th>Uppdaterat</th>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+  var api = new XMLHttpRequest();
+  api.open("GET","http://data.goteborg.se/SelfServiceBicycleService/v1.0/Stations/73eb4084-3431-4e88-978b-6e2c2d7bccbe?format=xml",false);
+  api.send();
+  var xmlDoc = api.responseXML;
+
+  var table = document.getElementById("pageTable");
+
+  for (var i = 0; i < xmlDoc.getElementsByTagName("StationId").length; i++) {
+    var row = table.insertRow(i + 1);
+    var name = xmlDoc.getElementsByTagName("Name")[i].textContent;
+    var lat = xmlDoc.getElementsByTagName("Lat")[i].textContent;
+    var long = xmlDoc.getElementsByTagName("Long")[i].textContent;
+    var loc = lat + "," + long;
+    var link = name.link("https://maps.google.com/maps?hl=es;z=14&q=" + loc);
+    row.insertCell(0).innerHTML = link;
+    row.insertCell(1).innerHTML = xmlDoc.getElementsByTagName("AvailableBikeStands")[i].textContent + " av " + xmlDoc.getElementsByTagName("BikeStands")[i].textContent;
+    row.insertCell(2).innerHTML = xmlDoc.getElementsByTagName("LastUpdate")[i].textContent.substr(11);
+  }
+  console.log(api.status);
+  </script>
+
+  <div class="separator"></div>
+
+</body>
+
+</html>
