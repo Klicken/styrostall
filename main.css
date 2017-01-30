@@ -55,7 +55,7 @@ tr td:first-child:hover {
 
 @media screen and (max-device-width: 480px) {
   table {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .container {
