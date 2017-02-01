@@ -35,7 +35,7 @@
     var lat = xmlDoc.getElementsByTagName("Lat")[i].textContent;
     var long = xmlDoc.getElementsByTagName("Long")[i].textContent;
     var loc = lat + "," + long;
-    var link = name.link("https://maps.google.com/maps?hl=es;z=14&q=" + loc);
+    var link = name.link("https://maps.google.com/maps?z=14&q=" + loc);
     row.insertCell(0).innerHTML = link;
     row.insertCell(1).innerHTML = xmlDoc.getElementsByTagName("AvailableBikeStands")[i].textContent + " av " + xmlDoc.getElementsByTagName("BikeStands")[i].textContent;
     row.insertCell(2).innerHTML = xmlDoc.getElementsByTagName("LastUpdate")[i].textContent.substr(11);
